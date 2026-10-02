@@ -95,7 +95,7 @@ async function launch() {
   if (!$('launch-dialog').open) $('launch-dialog').showModal();
   try {
     const result = await api('launch', {});
-    if (!/^windslayer:\/\/launch\?code=[a-f0-9]{64}$/.test(result.url)) throw new Error('올바르지 않은 실행 링크입니다.');
+    if (!/^pyslayer:\/\/launch\?code=[a-f0-9]{64}$/.test(result.url)) throw new Error('올바르지 않은 실행 링크입니다.');
     $('open-launcher').href = result.url; $('open-launcher').hidden = false;
     launchMessage('당신의 PC에서 모험을 시작하세요', '아래 실행기 열기를 누르고 브라우저의 실행 요청을 허용해 주세요. 접속권은 3분 동안 한 번만 사용할 수 있습니다.');
   }
