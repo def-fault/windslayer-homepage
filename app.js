@@ -117,6 +117,7 @@ async function openDownload() {
   try {
     const info = await api('download');
     $('download-client').href = API_ORIGIN + '/downloads/WindSlayer-Client.zip';
+    $('download-launcher').href = API_ORIGIN + '/downloads/WindSlayerLauncher.exe';
     $('download-client').hidden = !info.available;
     $('download-info').textContent = info.available ? `Windows PC · ${(info.size / 1024 / 1024).toFixed(1)} MB · 게임 + 전용 실행기` : '클라이언트 패키지를 준비하고 있습니다. 잠시 후 다시 확인해 주세요.';
   } catch { $('download-client').hidden = true; $('download-info').textContent = '다운로드 서버에 연결하지 못했습니다.'; }
