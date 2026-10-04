@@ -18,7 +18,9 @@ async function api(path, data) {
     options.method = 'POST'; headers['Content-Type'] = 'application/json';
     headers['X-Requested-With'] = 'WindSlayer'; options.body = JSON.stringify(data);
   }
-  const response = await fetch(API_ORIGIN + '/api/' + path, options);
+  let response;
+  try { response = await fetch(API_ORIGIN + '/api/' + path, options); }
+  catch { throw new Error('서버 연결에 실패했습니다. Ctrl+Shift+R로 새로고침한 뒤 다시 시도해 주세요. 연결 주소: ' + API_ORIGIN); }
   const result = await response.json();
   if (!response.ok) {
     if (response.status === 401 && CROSS_ORIGIN) saveSession('');
